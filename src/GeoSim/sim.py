@@ -15,15 +15,15 @@ class GeoSim:
         assert 'scalers_folder' in input_dict, 'scalers_folder is missing, specify the path to the folder containing the scalers!'
 
         if 'vec_size' in input_dict:
-            vec_size = input_dict['vec_size']
+            self.vec_size = input_dict['vec_size']
         else:
-            vec_size = 60
+            self.vec_size = 60
 
         input_shape = (3,128) # These are fixed
         output_shape = (6,18)
 
 
-        self.NNmodel = FullModel(latent_size=vec_size,
+        self.NNmodel = FullModel(latent_size=self.vec_size,
                     gan_save_file=input_dict['file_name'],
                     proxi_save_file=input_dict['full_em_model_file_name'],
                     proxi_scalers=input_dict['scalers_folder'],
